@@ -6,9 +6,6 @@ html {
   --green: #3f7d20ff;
 }
 
-body {
-  background: var(--lavender-mist);
-}
 
 #root {
   max-width: 1280px;

@@ -1,3 +1,15 @@
+html {
+  --honey-bronze: #f6ae2dff;
+  --charcoal-blue: #454955ff;
+  --lavender-mist: #f3eff5ff;
+  --lime-moss: #72b01dff;
+  --green: #3f7d20ff;
+}
+
+body {
+  background: var(--lavender-mist);
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -18,21 +30,33 @@
 }
 
 .coin {
-  background-color: pink;
+  background-color: var(--honey-bronze);
 }
 
 .spin {
-  background-color: lime;
+  background-color: var(--lime-moss);
 }
 
 .chain {
   margin: 2rem;
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 2ch;
   justify-content: flex-start;
+  max-width: 80ch;
 }
 
 .slider {
   width: 20ch;
+}
+
+input[type="button"] {
+  background: var(--charcoal-blue);
+  font-weight: 700;
+  color: white;
+  margin: 1ch;
+  font-size: 1em;
+  padding: 0.2em 1em;
+  border: none;
+
 }

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import './App.css'
 import { Chain } from './chain';
 
@@ -10,6 +10,13 @@ function App() {
 
   const res = quantity * p
 
+  const onReset = useCallback(() => {
+    setNumSpins(5)
+    setQuantity(1)
+    setP(0.5)
+
+  }, [setNumSpins, setQuantity, setP])
+
   return (
     <div>
       <h1>number of spins left: {numSpins}</h1>
@@ -18,7 +25,8 @@ function App() {
         <Slider handleChange={(e) => setQuantity(Number(e.target.value))} default={quantity} label={`quantity of spins to reward (${quantity})`} min={1} max={10} />
         <Slider handleChange={(e) => setP(Number(e.target.value) / 100)} default={p * 100} label={`probability (${p})`} min={1} max={100} />
       </div>
-      <input type='button' onClick={() => setRun(r => !r)} value={run ? 'stop' : 'start'} />
+      <input type='button' onClick={() => setRun(r => !r)} value={run ? 'STOP' : 'START'} />
+      <input type='button' onClick={onReset} value={'RESET VALUES'} />
       <Chain run={run} spins={numSpins} quantity={quantity} probability={p} setSpins={setNumSpins} />
     </div>
   )
@@ -29,7 +37,7 @@ const Slider = (props) => {
 
   return (<p>
     {props.label} <br />
-    <input className='slider' type='range' min={props.min} max={props.max} onChange={props.handleChange} defaultValue={props.default} />
+    <input className='slider' type='range' min={props.min} max={props.max} onChange={props.handleChange} defaultValue={props.default} value={props.default} />
   </p>
   )
 }

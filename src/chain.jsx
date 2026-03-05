@@ -19,7 +19,7 @@ export const Chain = ({ run, spins, quantity, probability, setSpins }) => {
         if (res <= probability) {
           console.log(`won ${quantity} spins`)
           setSpins(s => s + quantity)
-          setRewards(prev => [...prev, 'spin'])
+          setRewards(prev => [...prev, ...Array(quantity).fill('spin')])
         } else {
           console.log(`won coins`)
           setRewards(prev => [...prev, 'coin'])

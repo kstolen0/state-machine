@@ -15,20 +15,21 @@ function App() {
       <h1>number of spins left: {numSpins}</h1>
       <h2>chain is {res < 1 ? `finite` : `infinite`} ({res})</h2>
       <div>
-        <Input handleChange={(e) => setQuantity(Number(e.target.value))} default={quantity} label={'quantity of spins to reward'} />
-        <Input handleChange={(e) => setP(Number(e.target.value))} default={p} label={'probability of spin reward'} />
+        <Slider handleChange={(e) => setQuantity(Number(e.target.value))} default={quantity} label={`quantity of spins to reward (${quantity})`} min={1} max={10} />
+        <Slider handleChange={(e) => setP(Number(e.target.value) / 100)} default={p * 100} label={`probability (${p})`} min={1} max={100} />
       </div>
-      <input type='button' onClick={() => setRun(r => !r)} value={'toggle'} />
+      <input type='button' onClick={() => setRun(r => !r)} value={run ? 'stop' : 'start'} />
       <Chain run={run} spins={numSpins} quantity={quantity} probability={p} setSpins={setNumSpins} />
     </div>
   )
 }
 
-const Input = (props) => {
+
+const Slider = (props) => {
 
   return (<p>
     {props.label} <br />
-    <input onChange={props.handleChange} defaultValue={props.default} />
+    <input className='slider' type='range' min={props.min} max={props.max} onChange={props.handleChange} defaultValue={props.default} />
   </p>
   )
 }

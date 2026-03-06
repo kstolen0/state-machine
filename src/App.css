@@ -39,6 +39,12 @@ html {
   background-color: var(--lime-moss);
 }
 
+.none {
+  background-color: var(--charcoal-blue);
+}
+
+
+
 .chain {
   margin: 2rem;
   display: flex;
@@ -62,6 +68,11 @@ input[type="button"] {
   border: none;
   border-radius: 0.5em;
   max-width: 20rem;
+}
+
+input[type="button"]:disabled {
+  background: grey;
+  color: #dedede;
 }
 
 .inputs {

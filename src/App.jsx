@@ -8,7 +8,7 @@ function App() {
   const [p, setP] = useState(0.5);
   const [run, setRun] = useState(false)
 
-  const res = quantity * p
+  const res = (quantity * p).toFixed(2)
 
   const onReset = useCallback(() => {
     setNumSpins(5)
@@ -17,16 +17,23 @@ function App() {
 
   }, [setNumSpins, setQuantity, setP])
 
+  const addSpin = useCallback(() => {
+    setNumSpins(n => n + 1)
+  }, [setNumSpins]);
+
   return (
-    <div>
-      <h1>number of spins left: {numSpins}</h1>
-      <h2>chain is {res < 1 ? `finite` : `infinite`} ({res})</h2>
-      <div>
+    <div className='container'>
+      <div className='inputs'>
         <Slider handleChange={(e) => setQuantity(Number(e.target.value))} default={quantity} label={`quantity of spins to reward (${quantity})`} min={1} max={10} />
         <Slider handleChange={(e) => setP(Number(e.target.value) / 100)} default={p * 100} label={`probability (${p})`} min={1} max={100} />
       </div>
-      <input type='button' onClick={() => setRun(r => !r)} value={run ? 'STOP' : 'START'} />
-      <input type='button' onClick={onReset} value={'RESET VALUES'} />
+      <div>
+        <input type='button' onClick={() => setRun(r => !r)} value={run ? 'STOP' : 'START'} />
+        <input type='button' onClick={addSpin} value={'ADD SPIN'} />
+        <input type='button' onClick={onReset} value={'RESET VALUES'} />
+      </div>
+      <h2>number of spins left: {numSpins}</h2>
+      <h3>chain is {res < 1 ? `finite` : `infinite`} ({`${quantity} * ${p} = ${res}`})</h3>
       <Chain run={run} spins={numSpins} quantity={quantity} probability={p} setSpins={setNumSpins} />
     </div>
   )

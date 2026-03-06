@@ -50,8 +50,10 @@ function App() {
         <input type='button' disabled={coins < 1} onClick={buySpin} value={'BUY SPIN'} />
         <input type='button' onClick={onReset} value={'RESET VALUES'} />
       </div>
-      <h2>spins: {numSpins}</h2>
-      <h2>coins: {coins}</h2>
+      <div style={{ display: 'flex', gap: '1rem' }}>
+        <h2>spins: {numSpins}</h2>
+        <h2>coins: {coins}</h2>
+      </div>
       <h3>chain is {res < 1 ? `finite` : `infinite`} ({`${spinOutcomeAmount} * ${spinOutcomeP} = ${res}`})</h3>
       <Chain spins={numSpins} quantity={spinOutcomeAmount} spinP={spinOutcomeP} coinP={coinOutcomeP} setSpins={setNumSpins} setCoins={setCoins} />
     </div>

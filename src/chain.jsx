@@ -17,18 +17,18 @@ export const Chain = ({ spins, quantity, spinP, setSpins, setCoins, coinP }) => 
         if (res <= spinP) {
           console.log(`won ${quantity} spins`)
           setSpins(s => s + quantity)
-          setRewards(prev => [...prev, ...Array(quantity).fill('spin')])
+          setRewards(prev => [...prev, ...Array(quantity).fill('spin')].slice(-25))
           return
         }
         res -= spinP
         if (res <= coinP) {
           console.log(`won coin`)
           setCoins(c => c + 1)
-          setRewards(prev => [...prev, 'coin'])
+          setRewards(prev => [...prev, 'coin'].slice(-25))
           return
         }
         console.log(`won nothing`)
-        setRewards(prev => [...prev, 'none'])
+        setRewards(prev => [...prev, 'none'].slice(-25))
 
       }, 1000);
     }

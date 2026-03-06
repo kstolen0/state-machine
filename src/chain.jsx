@@ -36,8 +36,8 @@ export const Chain = ({ run, spins, quantity, probability, setSpins }) => {
     <div>
       <input type='button' onClick={() => setRewards([])} value={'CLEAR PRIZES'} />
       <div className="chain">
-        {rewards.map((type) => (
-          <Reward type={type} />
+        {rewards.map((type, idx) => (
+          <Reward type={type} key={idx} />
         ))}
       </div>
     </div>

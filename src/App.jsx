@@ -44,7 +44,7 @@ const Slider = (props) => {
 
   return (<p>
     {props.label} <br />
-    <input className='slider' type='range' min={props.min} max={props.max} onChange={props.handleChange} defaultValue={props.default} value={props.default} />
+    <input className='slider' type='range' min={props.min} max={props.max} onChange={props.handleChange} value={props.default} />
   </p>
   )
 }
